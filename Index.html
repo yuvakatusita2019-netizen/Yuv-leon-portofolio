@@ -1,0 +1,1163 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b08">
+<title>YUV & LEONEL | Creative Studio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #080b08;
+  --surface: #111711;
+  --surface2: #182018;
+  --lime: #b5ff39;
+  --lime2: #73e600;
+  --white: #f5f7f2;
+  --muted: #929b8e;
+  --gradient: linear-gradient(120deg,#c5ff54,#70e500);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+button, a { font: inherit; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; }
+
+::selection {
+  background: var(--lime);
+  color: #080b08;
+}
+
+/* BACKGROUND EFFECT */
+
+body::before {
+  content: "";
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: #8cff0010;
+  filter: blur(120px);
+  border-radius: 50%;
+  top: -200px;
+  right: -150px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* NAVBAR */
+
+header {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  width: 100%;
+  background: #080b08dc;
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid #ffffff12;
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: auto;
+  padding: 18px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.logo span { color: var(--lime); }
+
+.nav-links {
+  display: flex;
+  gap: 27px;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 12px;
+  color: var(--muted);
+  transition: .3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--lime);
+}
+
+.menu-btn {
+  display: none;
+  border: 1px solid #ffffff25;
+  background: var(--surface);
+  color: white;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+/* PAGE SYSTEM */
+
+.page {
+  display: none;
+  min-height: 100vh;
+  padding: 120px 25px 70px;
+  animation: pageIn .5s ease;
+}
+
+.page.active { display: block; }
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #b5ff3940;
+  background: #b5ff3910;
+  color: var(--lime);
+  padding: 8px 13px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  background: var(--lime);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--lime);
+}
+
+.section-title {
+  font-size: clamp(32px,5vw,55px);
+  font-weight: 900;
+  letter-spacing: -2.5px;
+  line-height: 1.08;
+  margin-bottom: 18px;
+}
+
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.description {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 14px;
+  max-width: 580px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 14px 22px;
+  border-radius: 9px;
+  font-weight: 800;
+  font-size: 12px;
+  transition: .3s;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--gradient);
+  color: #10150a;
+}
+
+.btn-primary:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 35px #9dff3940;
+}
+
+.btn-outline {
+  border: 1px solid #ffffff30;
+  color: white;
+  background: transparent;
+}
+
+.btn-outline:hover {
+  border-color: var(--lime);
+  color: var(--lime);
+}
+
+/* HOME PAGE */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  align-items: center;
+  gap: 45px;
+  min-height: 68vh;
+}
+
+.hero h1 {
+  font-size: clamp(45px,7vw,85px);
+  line-height: .99;
+  letter-spacing: -5px;
+  font-weight: 900;
+  margin-bottom: 25px;
+}
+
+.hero p {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 14px;
+  max-width: 480px;
+  margin-bottom: 30px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero-visual {
+  position: relative;
+  height: 400px;
+  border-radius: 25px;
+  overflow: hidden;
+  border: 1px solid #b5ff3930;
+  background:
+    linear-gradient(0deg,#080b08e8,transparent 80%),
+    url("https://images.unsplash.com/photo-1558655146-d09347e92766?w=900") center/cover;
+}
+
+.hero-visual::before {
+  content: "CREATIVE";
+  position: absolute;
+  font-size: 65px;
+  font-weight: 900;
+  color: #b5ff39;
+  opacity: .8;
+  bottom: 30px;
+  left: 20px;
+  letter-spacing: -5px;
+}
+
+.floating-card {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+  padding: 15px;
+  background: #111a10dc;
+  border: 1px solid #b5ff3950;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  font-size: 11px;
+}
+
+.floating-card strong {
+  display: block;
+  color: var(--lime);
+  font-size: 20px;
+}
+
+/* STATS */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 15px;
+  margin-top: 35px;
+}
+
+.stat {
+  padding: 20px;
+  border: 1px solid #ffffff15;
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.stat h3 {
+  color: var(--lime);
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.stat p {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* INTRO / ABOUT */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.person-card {
+  background: var(--surface);
+  border: 1px solid #ffffff15;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: .3s;
+}
+
+.person-card:hover {
+  transform: translateY(-7px);
+  border-color: #b5ff3970;
+}
+
+.person-card img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  filter: grayscale(35%);
+}
+
+.person-info { padding: 24px; }
+
+.person-info h3 {
+  font-size: 25px;
+  margin-bottom: 9px;
+}
+
+.person-info p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* SERVICES */
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 17px;
+  margin-top: 40px;
+}
+
+.service-card {
+  background: var(--surface);
+  border: 1px solid #ffffff15;
+  padding: 27px 22px;
+  border-radius: 16px;
+  transition: .3s;
+}
+
+.service-card:hover {
+  transform: translateY(-7px);
+  border-color: var(--lime);
+  background: #172017;
+}
+
+.service-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  background: #b5ff3918;
+  color: var(--lime);
+  border-radius: 12px;
+  font-size: 23px;
+  margin-bottom: 20px;
+}
+
+.service-card h3 {
+  font-size: 19px;
+  margin-bottom: 12px;
+}
+
+.service-card p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.service-card ul {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.service-card li {
+  font-size: 12px;
+  margin-top: 10px;
+  color: #c3cbbd;
+}
+
+.service-card li::before {
+  content: "↗ ";
+  color: var(--lime);
+}
+
+/* PORTFOLIO */
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 30px 0;
+}
+
+.filter-btn {
+  padding: 10px 17px;
+  background: var(--surface);
+  border: 1px solid #ffffff20;
+  color: var(--muted);
+  border-radius: 30px;
+  font-size: 11px;
+  transition: .3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: var(--lime);
+  color: #10150a;
+  border-color: var(--lime);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 18px;
+}
+
+.project {
+  border-radius: 15px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid #ffffff15;
+  transition: .3s;
+}
+
+.project:hover {
+  transform: translateY(-6px);
+  border-color: #b5ff3970;
+}
+
+.project.hidden { display: none; }
+
+.project img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  transition: .5s;
+}
+
+.project:hover img { transform: scale(1.05); }
+
+.project-info { padding: 18px; }
+
+.project-info small {
+  color: var(--lime);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.project-info h3 {
+  font-size: 16px;
+  margin-top: 7px;
+}
+
+/* PRICING */
+
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 18px;
+  margin-top: 40px;
+}
+
+.price-card {
+  background: var(--surface);
+  border: 1px solid #ffffff18;
+  border-radius: 17px;
+  padding: 27px 22px;
+  transition: .3s;
+}
+
+.price-card:hover {
+  border-color: var(--lime);
+  transform: translateY(-6px);
+}
+
+.price-card.featured {
+  border-color: var(--lime);
+  background: linear-gradient(160deg,#1c2b14,#101510);
+}
+
+.price-card .type {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.price-card h3 {
+  font-size: 21px;
+  margin: 12px 0;
+}
+
+.price {
+  color: var(--lime);
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  margin: 22px 0 10px;
+}
+
+.price-card p {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.price-card .btn {
+  width: 100%;
+  margin-top: 25px;
+}
+
+/* CONTACT */
+
+.contact-box {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  background: var(--surface);
+  border: 1px solid #ffffff18;
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 17px;
+  border: 1px solid #ffffff15;
+  border-radius: 12px;
+  margin-top: 15px;
+  transition: .3s;
+}
+
+.contact-item:hover { border-color: var(--lime); }
+
+.contact-icon {
+  font-size: 24px;
+  width: 45px;
+  height: 45px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #b5ff3918;
+}
+
+.contact-item h4 {
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.contact-item p {
+  font-size: 11px;
+  color: var(--muted);
+  word-break: break-word;
+}
+
+.contact-message {
+  background: linear-gradient(145deg,#b5ff39,#70e500);
+  color: #10150a;
+  border-radius: 15px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-message h3 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  letter-spacing: -1px;
+}
+
+.contact-message p {
+  font-size: 13px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.contact-message .btn {
+  background: #10150a;
+  color: var(--lime);
+  align-self: flex-start;
+}
+
+/* FOOTER */
+
+footer {
+  border-top: 1px solid #ffffff15;
+  padding: 25px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+footer span { color: var(--lime); }
+
+/* REVEAL */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: .7s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:800px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .hero-visual { height: 300px; }
+
+  .service-grid,
+  .price-grid,
+  .portfolio-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .contact-box { grid-template-columns: 1fr; }
+}
+
+@media(max-width:600px) {
+  .navbar { padding: 15px 20px; }
+
+  .menu-btn { display: block; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 65px;
+    left: 15px;
+    right: 15px;
+    background: #111711;
+    border: 1px solid #ffffff20;
+    border-radius: 13px;
+    padding: 20px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .nav-links.open { display: flex; }
+
+  .nav-links a { font-size: 13px; }
+
+  .page { padding: 105px 19px 50px; }
+
+  .hero h1 {
+    letter-spacing: -3px;
+  }
+
+  .about-grid,
+  .service-grid,
+  .price-grid,
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats { gap: 8px; }
+
+  .stat { padding: 13px; }
+  .stat h3 { font-size: 20px; }
+  .stat p { font-size: 9px; }
+
+  .section-title { letter-spacing: -1.5px; }
+
+  .contact-box { padding: 17px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav class="navbar">
+    <a class="logo" href="#" onclick="showPage('home');return false;">
+      YUV <span>&</span> LEONEL.
+    </a>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#home" class="active" onclick="showPage('home')">Home</a>
+      <a href="#services" onclick="showPage('services')">Services</a>
+      <a href="#portfolio" onclick="showPage('portfolio')">Portfolio</a>
+      <a href="#pricing" onclick="showPage('pricing')">Pricing</a>
+      <a href="#contact" onclick="showPage('contact')">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<!-- PAGE 1: PERKENALAN -->
+
+<section class="page active" id="home">
+<div class="container">
+
+  <div class="hero">
+
+    <div>
+      <div class="tag"><span class="dot"></span> CREATIVE DIGITAL STUDIO</div>
+
+      <h1>
+        WE CREATE.<br>
+        WE <span class="gradient-text">INNOVATE.</span>
+      </h1>
+
+      <p>
+        Welcome to YUV & LEONEL. Kami adalah creative digital studio
+        yang menggabungkan kreativitas, teknologi, dan inovasi
+        untuk menghasilkan karya digital yang menarik dan fungsional.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="showPage('portfolio')">
+          Explore Our Work ↗
+        </button>
+
+        <button class="btn btn-outline" onclick="showPage('contact')">
+          Contact Us
+        </button>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <h3>03</h3>
+          <p>Creative Services</p>
+        </div>
+        <div class="stat">
+          <h3>02</h3>
+          <p>Creative Minds</p>
+        </div>
+        <div class="stat">
+          <h3>∞</h3>
+          <p>Possibilities</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="floating-card">
+        <strong>Y&L</strong>
+        CREATIVE PARTNERS
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center;margin-top:55px">
+    <p style="color:var(--muted);font-size:11px;letter-spacing:3px">
+      DESIGN · EDIT · DEVELOP
+    </p>
+  </div>
+
+</div>
+</section>
+
+<!-- PAGE 2: APA YANG KAMI KERJAKAN -->
+
+<section class="page" id="services">
+<div class="container">
+
+  <div class="tag"><span class="dot"></span> WHAT WE DO</div>
+
+  <h2 class="section-title">
+    OUR <span class="gradient-text">SERVICES.</span>
+  </h2>
+
+  <p class="description">
+    Kami menyediakan tiga kategori layanan digital untuk membantu
+    kebutuhan personal, pendidikan, maupun bisnis.
+  </p>
+
+  <div class="service-grid">
+
+    <div class="service-card">
+      <div class="service-icon">✦</div>
+      <h3>Graphic Design</h3>
+      <p>Mengubah ide menjadi visual yang komunikatif dan menarik.</p>
+      <ul>
+        <li>Poster Design</li>
+        <li>Infographic Design</li>
+        <li>Presentation / PPT</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">▶</div>
+      <h3>Video Editing</h3>
+      <p>Mengolah footage menjadi video yang lebih hidup dan dinamis.</p>
+      <ul>
+        <li>Video Editing</li>
+        <li>Short Clips</li>
+        <li>Sound Effects (SFX)</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">⌘</div>
+      <h3>Programming</h3>
+      <p>Membuat solusi digital sederhana untuk kebutuhan sehari-hari.</p>
+      <ul>
+        <li>Daily Utility Programs</li>
+        <li>Simple Automation</li>
+        <li>Custom Programs</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+</section>
+
+<!-- PAGE 3: PORTFOLIO -->
+
+<section class="page" id="portfolio">
+<div class="container">
+
+  <div class="tag"><span class="dot"></span> SELECTED PROJECTS</div>
+
+  <h2 class="section-title">
+    OUR <span class="gradient-text">PORTFOLIO.</span>
+  </h2>
+
+  <p class="description">
+    Beberapa contoh visual untuk menggambarkan gaya dan jenis
+    pekerjaan kami. Project asli akan segera ditambahkan.
+  </p>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterProjects('all',this)">All Projects</button>
+    <button class="filter-btn" onclick="filterProjects('design',this)">Design</button>
+    <button class="filter-btn" onclick="filterProjects('editing',this)">Editing</button>
+    <button class="filter-btn" onclick="filterProjects('programming',this)">Programming</button>
+  </div>
+
+  <div class="portfolio-grid">
+
+    <div class="project" data-category="design">
+      <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=700" alt="Abstract graphic design">
+      <div class="project-info">
+        <small>Graphic Design</small>
+        <h3>Creative Poster</h3>
+      </div>
+    </div>
+
+    <div class="project" data-category="design">
+      <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=700" alt="Design project">
+      <div class="project-info">
+        <small>Graphic Design</small>
+        <h3>Visual Identity</h3>
+      </div>
+    </div>
+
+    <div class="project" data-category="editing">
+      <img src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=700" alt="Video editing">
+      <div class="project-info">
+        <small>Video Editing</small>
+        <h3>Creative Video</h3>
+      </div>
+    </div>
+
+    <div class="project" data-category="editing">
+      <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=700" alt="Film production">
+      <div class="project-info">
+        <small>Video Editing</small>
+        <h3>Cinematic Clips</h3>
+      </div>
+    </div>
+
+    <div class="project" data-category="programming">
+      <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=700" alt="Programming code">
+      <div class="project-info">
+        <small>Programming</small>
+        <h3>Daily Utility</h3>
+      </div>
+    </div>
+
+    <div class="project" data-category="programming">
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=700" alt="Technology">
+      <div class="project-info">
+        <small>Programming</small>
+        <h3>Digital Solutions</h3>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</section>
+
+<!-- PAGE 4: HARGA -->
+
+<section class="page" id="pricing">
+<div class="container">
+
+  <div class="tag"><span class="dot"></span> OUR PRICING</div>
+
+  <h2 class="section-title">
+    SIMPLE <span class="gradient-text">PRICING.</span>
+  </h2>
+
+  <p class="description">
+    Harga awal layanan kami. Biaya akhir menyesuaikan tingkat
+    kerumitan, kebutuhan, dan detail proyek.
+  </p>
+
+  <div class="price-grid">
+
+    <div class="price-card">
+      <span class="type">01 / DESIGN</span>
+      <h3>Graphic Design</h3>
+      <div class="price">Rp40K–100K</div>
+      <p>Poster, infografis, dan presentasi. Harga tergantung tingkat kerumitan desain.</p>
+      <button class="btn btn-outline" onclick="orderService('Graphic Design')">
+        Order Service ↗
+      </button>
+    </div>
+
+    <div class="price-card featured">
+      <span class="type">02 / VIDEO</span>
+      <h3>Video Editing</h3>
+      <div class="price">Rp10K–30K</div>
+      <p>Harga per menit video. Menyesuaikan durasi, efek, dan tingkat kerumitan editing.</p>
+      <button class="btn btn-primary" onclick="orderService('Video Editing')">
+        Order Service ↗
+      </button>
+    </div>
+
+    <div class="price-card">
+      <span class="type">03 / TECH</span>
+      <h3>Programming</h3>
+      <div class="price">Rp150K+</div>
+      <p>Pembuatan program sesuai kebutuhan. Harga berdasarkan fitur dan kompleksitas.</p>
+      <button class="btn btn-outline" onclick="orderService('Programming')">
+        Order Service ↗
+      </button>
+    </div>
+
+  </div>
+
+  <p style="color:var(--muted);font-size:11px;margin-top:25px">
+    * Harga dapat berubah sesuai kesepakatan dan spesifikasi proyek.
+  </p>
+
+</div>
+</section>
+
+<!-- PAGE 5: CONTACT -->
+
+<section class="page" id="contact">
+<div class="container">
+
+  <div class="tag"><span class="dot"></span> GET IN TOUCH</div>
+
+  <h2 class="section-title">
+    LET'S MAKE<br>
+    SOMETHING <span class="gradient-text">GREAT.</span>
+  </h2>
+
+  <p class="description">
+    Punya ide atau proyek yang ingin diwujudkan?
+    Hubungi kami dan mari mulai berkolaborasi.
+  </p>
+
+  <div class="contact-box">
+
+    <div>
+      <h3 style="font-size:20px">Contact Information</h3>
+
+      <div class="contact-item">
+        <div class="contact-icon">◉</div>
+        <div>
+          <h4>WhatsApp</h4>
+          <p>+62 xxx-xxxx-xxxx</p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">✉</div>
+        <div>
+          <h4>Email</h4>
+          <p>xxxxxxxxxxxx@gmail.com</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="contact-message">
+      <h3>Have a project in mind?</h3>
+      <p>
+        Every great project starts with an idea.
+        Let's turn your idea into something meaningful.
+      </p>
+      <button class="btn" onclick="copyEmail()">
+        Copy Email Address ↗
+      </button>
+    </div>
+
+  </div>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+  <p>© 2026 <span>YUV & LEONEL</span>. All Rights Reserved.</p>
+  <p style="margin-top:8px">DESIGN · EDIT · DEVELOP</p>
+</footer>
+
+<script>
+
+// NAVIGATION
+
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(page => {
+    page.classList.remove('active');
+  });
+
+  document.getElementById(pageId).classList.add('active');
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + pageId) {
+      link.classList.add('active');
+    }
+  });
+
+  document.getElementById('navLinks').classList.remove('open');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  setTimeout(revealElements, 100);
+}
+
+// MOBILE MENU
+
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+// PORTFOLIO FILTER
+
+function filterProjects(category, button) {
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+
+  button.classList.add('active');
+
+  document.querySelectorAll('.project').forEach(project => {
+    if (
+      category === 'all' ||
+      project.dataset.category === category
+    ) {
+      project.classList.remove('hidden');
+    } else {
+      project.classList.add('hidden');
+    }
+  });
+}
+
+// ORDER SERVICE
+
+function orderService(service) {
+  const message = `Halo YUV & LEONEL! Saya tertarik menggunakan jasa ${service}. Boleh saya bertanya lebih lanjut mengenai harga dan proses pengerjaannya?`;
+
+  const phone = "+6281436119855";
+
+  if (!phone) {
+    alert("Silakan tambahkan nomor WhatsApp terlebih dahulu di kode HTML.");
+    return;
+  }
+
+  window.open(
+    "https://wa.me/" + phone + "?text=" + encodeURIComponent(message),
+    "_blank"
+  );
+}
+
+// COPY EMAIL
+
+function copyEmail() {
+  const email = "yuvaka.tusita2019@gmail.com";
+
+  navigator.clipboard.writeText(email)
+    .then(() => alert("Email berhasil disalin!"))
+    .catch(() => alert("Silakan salin email secara manual: " + email));
+}
+
+// REVEAL ANIMATION
+
+function revealElements() {
+  const elements = document.querySelectorAll(
+    '.page.active .service-card, .page.active .project, .page.active .price-card, .page.active .person-card, .page.active .stat'
+  );
+
+  elements.forEach((element, index) => {
+    element.classList.remove('reveal', 'show');
+    void element.offsetWidth;
+    element.classList.add('reveal');
+
+    setTimeout(() => {
+      element.classList.add('show');
+    }, index * 80);
+  });
+}
+
+window.addEventListener('load', revealElements);
+
+</script>
+
+</body>
+</html>
