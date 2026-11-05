@@ -1,0 +1,1541 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b08">
+<title>KREXO | Creative Digital Studio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #080b08;
+  --surface: #111711;
+  --surface2: #182018;
+  --lime: #b5ff39;
+  --white: #f5f7f2;
+  --muted: #929b8e;
+  --gradient: linear-gradient(120deg,#c5ff54,#70e500);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+button, a { font: inherit; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; }
+
+::selection {
+  background: var(--lime);
+  color: #080b08;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: #8cff0010;
+  filter: blur(120px);
+  border-radius: 50%;
+  top: -200px;
+  right: -150px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* NAVBAR */
+
+header {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  width: 100%;
+  background: #080b08dc;
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid #ffffff12;
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: auto;
+  padding: 18px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.logo span { color: var(--lime); }
+
+.nav-links {
+  display: flex;
+  gap: 27px;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 12px;
+  color: var(--muted);
+  transition: .3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--lime);
+}
+
+.menu-btn {
+  display: none;
+  border: 1px solid #ffffff25;
+  background: var(--surface);
+  color: white;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+/* PAGE SYSTEM */
+
+.page {
+  display: none;
+  min-height: 100vh;
+  padding: 120px 25px 70px;
+  animation: pageIn .5s ease;
+}
+
+.page.active { display: block; }
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #b5ff3940;
+  background: #b5ff3910;
+  color: var(--lime);
+  padding: 8px 13px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  background: var(--lime);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--lime);
+}
+
+.section-title {
+  font-size: clamp(32px,5vw,55px);
+  font-weight: 900;
+  letter-spacing: -2.5px;
+  line-height: 1.08;
+  margin-bottom: 18px;
+}
+
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.description {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 14px;
+  max-width: 580px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 14px 22px;
+  border-radius: 9px;
+  font-weight: 800;
+  font-size: 12px;
+  transition: .3s;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--gradient);
+  color: #10150a;
+}
+
+.btn-primary:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 35px #9dff3940;
+}
+
+.btn-outline {
+  border: 1px solid #ffffff30;
+  color: white;
+  background: transparent;
+}
+
+.btn-outline:hover {
+  border-color: var(--lime);
+  color: var(--lime);
+}
+
+/* HOME */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  align-items: center;
+  gap: 45px;
+  min-height: 68vh;
+}
+
+.hero h1 {
+  font-size: clamp(45px,7vw,85px);
+  line-height: .99;
+  letter-spacing: -5px;
+  font-weight: 900;
+  margin-bottom: 25px;
+}
+
+.hero p {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 14px;
+  max-width: 480px;
+  margin-bottom: 30px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero-visual {
+  position: relative;
+  height: 400px;
+  border-radius: 25px;
+  overflow: hidden;
+  border: 1px solid #b5ff3930;
+  background:
+    linear-gradient(0deg,#080b08e8,transparent 80%),
+    url("https://images.unsplash.com/photo-1558655146-d09347e92766?w=900") center/cover;
+}
+
+.hero-visual::before {
+  content: "KREXO";
+  position: absolute;
+  font-size: 65px;
+  font-weight: 900;
+  color: #b5ff39;
+  opacity: .8;
+  bottom: 30px;
+  left: 20px;
+  letter-spacing: -5px;
+}
+
+.floating-card {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+  padding: 15px;
+  background: #111a10dc;
+  border: 1px solid #b5ff3950;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  font-size: 11px;
+}
+
+.floating-card strong {
+  display: block;
+  color: var(--lime);
+  font-size: 20px;
+}
+
+/* STATS */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 15px;
+  margin-top: 35px;
+}
+
+.stat {
+  padding: 20px;
+  border: 1px solid #ffffff15;
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.stat h3 {
+  color: var(--lime);
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.stat p {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* SERVICES */
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 17px;
+  margin-top: 40px;
+}
+
+.service-card {
+  background: var(--surface);
+  border: 1px solid #ffffff15;
+  padding: 27px 22px;
+  border-radius: 16px;
+  transition: .3s;
+}
+
+.service-card:hover {
+  transform: translateY(-7px);
+  border-color: var(--lime);
+  background: #172017;
+}
+
+.service-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  background: #b5ff3918;
+  color: var(--lime);
+  border-radius: 12px;
+  font-size: 23px;
+  margin-bottom: 20px;
+}
+
+.service-card h3 {
+  font-size: 19px;
+  margin-bottom: 12px;
+}
+
+.service-card p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.service-card ul {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.service-card li {
+  font-size: 12px;
+  margin-top: 10px;
+  color: #c3cbbd;
+}
+
+.service-card li::before {
+  content: "↗ ";
+  color: var(--lime);
+}
+
+/* CATALOG */
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 18px;
+  margin-top: 35px;
+}
+
+.catalog-card {
+  background: var(--surface);
+  border: 1px solid #ffffff15;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: .3s;
+}
+
+.catalog-card:hover {
+  transform: translateY(-6px);
+  border-color: #b5ff3970;
+}
+
+.catalog-preview {
+  height: 190px;
+  position: relative;
+  overflow: hidden;
+  background: var(--surface2);
+  display: grid;
+  place-items: center;
+}
+
+.preview-placeholder {
+  color: var(--lime);
+  font-size: 42px;
+}
+
+.catalog-info {
+  padding: 20px;
+}
+
+.catalog-category {
+  color: var(--lime);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.catalog-info h3 {
+  font-size: 17px;
+  margin: 9px 0;
+}
+
+.catalog-price {
+  color: var(--lime);
+  font-size: 20px;
+  font-weight: 900;
+  margin: 15px 0 7px;
+}
+
+.catalog-note {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+  min-height: 36px;
+}
+
+.catalog-actions {
+  display: flex;
+  gap: 9px;
+  margin-top: 20px;
+}
+
+.catalog-actions .btn {
+  flex: 1;
+  padding: 12px 8px;
+  font-size: 11px;
+}
+
+.preview-btn {
+  background: transparent;
+  color: white;
+  border: 1px solid #ffffff35;
+}
+
+.preview-btn:hover {
+  border-color: var(--lime);
+  color: var(--lime);
+}
+
+/* MODAL GENERAL */
+
+.preview-modal,
+.order-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: #000000e8;
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-modal.active,
+.order-modal.active {
+  display: flex;
+}
+
+.preview-content,
+.order-content {
+  width: 100%;
+  max-width: 750px;
+  background: var(--surface);
+  border: 1px solid #b5ff3950;
+  border-radius: 18px;
+  padding: 22px;
+  position: relative;
+  animation: pageIn .3s ease;
+}
+
+.order-content {
+  max-width: 440px;
+}
+
+.preview-header,
+.order-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.preview-header h3,
+.order-header h3 {
+  font-size: 18px;
+}
+
+.close-preview,
+.close-order {
+  border: 1px solid #ffffff30;
+  background: transparent;
+  color: white;
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-size: 18px;
+}
+
+.close-preview:hover,
+.close-order:hover {
+  color: var(--lime);
+  border-color: var(--lime);
+}
+
+/* PREVIEW CONTENT */
+
+.preview-stage {
+  width: 100%;
+  min-height: 200px;
+  max-height: 65vh;
+  background: #050705;
+  border-radius: 12px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.preview-stage img,
+.preview-stage video {
+  display: block;
+  max-width: 100%;
+  max-height: 65vh;
+  object-fit: contain;
+}
+
+.preview-stage video { width: 100%; }
+
+.preview-hint {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 13px;
+  line-height: 1.7;
+}
+
+/* ORDER OPTIONS */
+
+.order-subtitle {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.selected-service {
+  color: var(--lime);
+  font-weight: 800;
+  font-size: 14px;
+  margin-bottom: 20px;
+  padding: 13px;
+  border: 1px solid #b5ff3940;
+  background: #b5ff3910;
+  border-radius: 10px;
+}
+
+.order-option {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  padding: 17px;
+  margin-top: 12px;
+  border-radius: 12px;
+  border: 1px solid #ffffff20;
+  background: var(--surface2);
+  color: white;
+  text-align: left;
+  transition: .3s;
+}
+
+.order-option:hover {
+  border-color: var(--lime);
+  transform: translateY(-3px);
+}
+
+.order-option .option-icon {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #b5ff3918;
+  font-size: 22px;
+}
+
+.order-option strong {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.order-option small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.order-footer {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.7;
+  margin-top: 18px;
+}
+
+/* CONTACT */
+
+.contact-box {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  background: var(--surface);
+  border: 1px solid #ffffff18;
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 17px;
+  border: 1px solid #ffffff15;
+  border-radius: 12px;
+  margin-top: 15px;
+  transition: .3s;
+}
+
+.contact-item:hover { border-color: var(--lime); }
+
+.contact-icon {
+  font-size: 24px;
+  width: 45px;
+  height: 45px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #b5ff3918;
+}
+
+.contact-item h4 {
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.contact-item p {
+  font-size: 11px;
+  color: var(--muted);
+  word-break: break-word;
+}
+
+.contact-message {
+  background: linear-gradient(145deg,#b5ff39,#70e500);
+  color: #10150a;
+  border-radius: 15px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-message h3 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  letter-spacing: -1px;
+}
+
+.contact-message p {
+  font-size: 13px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.contact-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.contact-message .btn {
+  background: #10150a;
+  color: var(--lime);
+}
+
+.contact-message .btn:hover {
+  transform: translateY(-3px);
+}
+
+/* FOOTER */
+
+footer {
+  border-top: 1px solid #ffffff15;
+  padding: 25px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+footer span { color: var(--lime); }
+
+/* REVEAL */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: .7s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:800px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .hero-visual { height: 300px; }
+
+  .service-grid,
+  .catalog-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .contact-box { grid-template-columns: 1fr; }
+}
+
+@media(max-width:600px) {
+  .navbar { padding: 15px 20px; }
+
+  .menu-btn { display: block; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 65px;
+    left: 15px;
+    right: 15px;
+    background: #111711;
+    border: 1px solid #ffffff20;
+    border-radius: 13px;
+    padding: 20px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .nav-links.open { display: flex; }
+
+  .nav-links a { font-size: 13px; }
+
+  .page { padding: 105px 19px 50px; }
+
+  .hero h1 { letter-spacing: -3px; }
+
+  .service-grid,
+  .catalog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats { gap: 8px; }
+  .stat { padding: 13px; }
+  .stat h3 { font-size: 20px; }
+  .stat p { font-size: 9px; }
+
+  .section-title { letter-spacing: -1.5px; }
+
+  .contact-box { padding: 17px; }
+
+  .preview-content,
+  .order-content { padding: 15px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav class="navbar">
+    <a class="logo" href="#home" onclick="showPage('home');return false;">
+      KRE<span>X</span>O.
+    </a>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#home" class="active" onclick="showPage('home');return false;">Home</a>
+      <a href="#services" onclick="showPage('services');return false;">Services</a>
+      <a href="#portfolio" onclick="showPage('portfolio');return false;">Catalog</a>
+      <a href="#contact" onclick="showPage('contact');return false;">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<!-- HOME -->
+
+<section class="page active" id="home">
+<div class="container">
+
+  <div class="hero">
+    <div>
+      <div class="tag"><span class="dot"></span> CREATIVE DIGITAL STUDIO</div>
+
+      <h1>
+        WE CREATE.<br>
+        WE <span class="gradient-text">INNOVATE.</span>
+      </h1>
+
+      <p>
+        Welcome to KREXO. Kami adalah creative digital studio
+        yang menggabungkan kreativitas, teknologi, dan inovasi
+        untuk menghasilkan karya digital yang menarik dan fungsional.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="showPage('portfolio')">
+          Explore Our Catalog ↗
+        </button>
+
+        <button class="btn btn-outline" onclick="showPage('contact')">
+          Contact Us
+        </button>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <h3>07</h3>
+          <p>Order Services</p>
+        </div>
+        <div class="stat">
+          <h3>03</h3>
+          <p>Creative Fields</p>
+        </div>
+        <div class="stat">
+          <h3>∞</h3>
+          <p>Possibilities</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="floating-card">
+        <strong>KREXO</strong>
+        CREATIVE DIGITAL STUDIO
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:55px">
+    <p style="color:var(--muted);font-size:11px;letter-spacing:3px">
+      DESIGN · EDIT · DEVELOP
+    </p>
+  </div>
+
+</div>
+</section>
+
+<!-- SERVICES -->
+
+<section class="page" id="services">
+<div class="container">
+
+  <div class="tag"><span class="dot"></span> WHAT WE DO</div>
+
+  <h2 class="section-title">
+    OUR <span class="gradient-text">SERVICES.</span>
+  </h2>
+
+  <p class="description">
+    Kami menyediakan layanan desain grafis, video editing,
+    dan programming untuk kebutuhan personal maupun bisnis.
+  </p>
+
+  <div class="service-grid">
+
+    <div class="service-card">
+      <div class="service-icon">✦</div>
+      <h3>Graphic Design</h3>
+      <p>Mengubah ide menjadi visual yang komunikatif dan menarik.</p>
+      <ul>
+        <li>Poster Design</li>
+        <li>Infographic Design</li>
+        <li>Presentation / PPT</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">▶</div>
+      <h3>Video Editing</h3>
+      <p>Mengolah footage menjadi video yang lebih hidup dan dinamis.</p>
+      <ul>
+        <li>Meme Editing</li>
+        <li>Visual Effects (VFX)</li>
+        <li>Video Presentation</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">⌘</div>
+      <h3>Programming</h3>
+      <p>Membuat solusi digital untuk kebutuhan sehari-hari maupun bisnis.</p>
+      <ul>
+        <li>Daily Utility Programs</li>
+        <li>Business Programs</li>
+        <li>Custom Programs</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- CATALOG -->
+
+<section class="page" id="portfolio">
+<div class="container">
+
+  <div class="tag"><span class="dot"></span> KREXO ORDER CATALOG</div>
+
+  <h2 class="section-title">
+    CHOOSE YOUR <span class="gradient-text">SERVICE.</span>
+  </h2>
+
+  <p class="description">
+    Pilih layanan yang kamu butuhkan. Lihat preview terlebih dahulu
+    sebelum melakukan pemesanan. Harga akhir menyesuaikan kerumitan proyek.
+  </p>
+
+  <div class="catalog-grid">
+
+    <!-- 1 -->
+
+    <div class="catalog-card">
+      <div class="catalog-preview">
+        <div class="preview-placeholder">⌘</div>
+      </div>
+      <div class="catalog-info">
+        <small class="catalog-category">PROGRAMMING</small>
+        <h3>Program untuk Kebutuhan Sehari-hari</h3>
+        <div class="catalog-price">Rp150K+</div>
+        <p class="catalog-note">Harga tergantung kerumitan dan fitur program.</p>
+        <div class="catalog-actions">
+          <button class="btn preview-btn" onclick="openPreview('Program Kebutuhan Sehari-hari','video',PREVIEW.dailyProgram)">▶ Preview</button>
+          <button class="btn btn-primary" onclick="orderNow('Program untuk kebutuhan sehari-hari')">Order Now ↗</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+
+    <div class="catalog-card">
+      <div class="catalog-preview">
+        <div class="preview-placeholder">▣</div>
+      </div>
+      <div class="catalog-info">
+        <small class="catalog-category">PROGRAMMING</small>
+        <h3>Program untuk Sebuah Bisnis</h3>
+        <div class="catalog-price">Rp300K+</div>
+        <p class="catalog-note">Harga tergantung kerumitan, fitur, dan kebutuhan bisnis.</p>
+        <div class="catalog-actions">
+          <button class="btn preview-btn" onclick="openPreview('Program untuk Bisnis','video',PREVIEW.businessProgram)">▶ Preview</button>
+          <button class="btn btn-primary" onclick="orderNow('Program untuk sebuah bisnis')">Order Now ↗</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+
+    <div class="catalog-card">
+      <div class="catalog-preview">
+        <div class="preview-placeholder">▶</div>
+      </div>
+      <div class="catalog-info">
+        <small class="catalog-category">VIDEO EDITING</small>
+        <h3>Edit Meme</h3>
+        <div class="catalog-price">Rp10K–30K/menit</div>
+        <p class="catalog-note">Harga per menit, tergantung kerumitan editing.</p>
+        <div class="catalog-actions">
+          <button class="btn preview-btn" onclick="openPreview('Edit Meme','video',PREVIEW.meme)">▶ Preview</button>
+          <button class="btn btn-primary" onclick="orderNow('Edit meme')">Order Now ↗</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+
+    <div class="catalog-card">
+      <div class="catalog-preview">
+        <div class="preview-placeholder">✧</div>
+      </div>
+      <div class="catalog-info">
+        <small class="catalog-category">VIDEO EDITING</small>
+        <h3>Edit VFX</h3>
+        <div class="catalog-price">Rp15K–35K/menit</div>
+        <p class="catalog-note">Harga per menit, tergantung kerumitan efek visual.</p>
+        <div class="catalog-actions">
+          <button class="btn preview-btn" onclick="openPreview('Edit VFX','video',PREVIEW.vfx)">▶ Preview</button>
+          <button class="btn btn-primary" onclick="orderNow('Edit VFX')">Order Now ↗</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+
+    <div class="catalog-card">
+      <div class="catalog-preview">
+        <div class="preview-placeholder">▤</div>
+      </div>
+      <div class="catalog-info">
+        <small class="catalog-category">GRAPHIC DESIGN</small>
+        <h3>Desain Infografis</h3>
+        <div class="catalog-price">Rp30K–50K</div>
+        <p class="catalog-note">Harga tergantung kerumitan dan jumlah informasi.</p>
+        <div class="catalog-actions">
+          <button class="btn preview-btn" onclick="openPreview('Desain Infografis','image',PREVIEW.infographic)">▧ Preview</button>
+          <button class="btn btn-primary" onclick="orderNow('Desain infografis')">Order Now ↗</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+
+    <div class="catalog-card">
+      <div class="catalog-preview">
+        <div class="preview-placeholder">▧</div>
+      </div>
+      <div class="catalog-info">
+        <small class="catalog-category">GRAPHIC DESIGN</small>
+        <h3>Desain Poster</h3>
+        <div class="catalog-price">Rp30K–50K</div>
+        <p class="catalog-note">Harga tergantung kerumitan konsep dan desain.</p>
+        <div class="catalog-actions">
+          <button class="btn preview-btn" onclick="openPreview('Desain Poster','image',PREVIEW.poster)">▧ Preview</button>
+          <button class="btn btn-primary" onclick="orderNow('Desain poster')">Order Now ↗</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+
+    <div class="catalog-card">
+      <div class="catalog-preview">
+        <div class="preview-placeholder">▥</div>
+      </div>
+      <div class="catalog-info">
+        <small class="catalog-category">GRAPHIC DESIGN</small>
+        <h3>Desain PPT</h3>
+        <div class="catalog-price">Rp20K–30K/slide</div>
+        <p class="catalog-note">Harga per slide, tergantung kerumitan desain.</p>
+        <div class="catalog-actions">
+          <button class="btn preview-btn" onclick="openPreview('Desain PPT','video',PREVIEW.ppt)">▶ Preview</button>
+          <button class="btn btn-primary" onclick="orderNow('Desain PPT')">Order Now ↗</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <p style="color:var(--muted);font-size:11px;line-height:1.8;margin-top:25px">
+    * Harga yang tertera merupakan harga awal. Harga akhir ditentukan
+    berdasarkan tingkat kerumitan dan kesepakatan sebelum pengerjaan.
+  </p>
+
+</div>
+</section>
+
+<!-- PREVIEW MODAL -->
+
+<div class="preview-modal" id="previewModal" onclick="outsidePreview(event)">
+  <div class="preview-content">
+
+    <div class="preview-header">
+      <h3 id="previewTitle">Service Preview</h3>
+      <button class="close-preview" onclick="closePreview()">×</button>
+    </div>
+
+    <div class="preview-stage" id="previewStage">
+      <p style="color:var(--muted)">Preview akan ditampilkan di sini.</p>
+    </div>
+
+    <p class="preview-hint">
+      Ini adalah contoh hasil pekerjaan KREXO. Hasil akhir dapat
+      disesuaikan dengan kebutuhan dan permintaan pelanggan.
+    </p>
+
+  </div>
+</div>
+
+<!-- ORDER METHOD MODAL -->
+
+<div class="order-modal" id="orderModal" onclick="outsideOrder(event)">
+  <div class="order-content">
+
+    <div class="order-header">
+      <h3>Choose Order Method</h3>
+      <button class="close-order" onclick="closeOrder()">×</button>
+    </div>
+
+    <p class="order-subtitle">
+      Pilih metode yang ingin digunakan untuk menghubungi KREXO.
+    </p>
+
+    <div class="selected-service" id="selectedService">
+      Layanan yang dipilih
+    </div>
+
+    <button class="order-option" onclick="orderViaWhatsApp()">
+      <span class="option-icon">◉</span>
+      <span>
+        <strong>WhatsApp</strong>
+        <small>Chat langsung dengan KREXO</small>
+      </span>
+    </button>
+
+    <button class="order-option" onclick="orderViaGmail()">
+      <span class="option-icon">✉</span>
+      <span>
+        <strong>Gmail</strong>
+        <small>Kirim detail pesanan melalui email</small>
+      </span>
+    </button>
+
+    <p class="order-footer">
+      Dengan melanjutkan, kamu akan diarahkan ke aplikasi pilihanmu
+      untuk mengirimkan permintaan pesanan.
+    </p>
+
+  </div>
+</div>
+
+<!-- CONTACT -->
+
+<section class="page" id="contact">
+<div class="container">
+
+  <div class="tag"><span class="dot"></span> GET IN TOUCH</div>
+
+  <h2 class="section-title">
+    LET'S MAKE<br>
+    SOMETHING <span class="gradient-text">GREAT.</span>
+  </h2>
+
+  <p class="description">
+    Punya ide atau proyek yang ingin diwujudkan?
+    Hubungi KREXO dan mari mulai berkolaborasi.
+  </p>
+
+  <div class="contact-box">
+
+    <div>
+      <h3 style="font-size:20px">Contact Information</h3>
+
+      <div class="contact-item">
+        <div class="contact-icon">◉</div>
+        <div>
+          <h4>WhatsApp</h4>
+          <p>+62 814-3611-9855</p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">✉</div>
+        <div>
+          <h4>Gmail</h4>
+          <p>yuvandleon2512@gmail.com</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-message">
+      <h3>Have a project in mind?</h3>
+      <p>
+        Every great project starts with an idea.
+        Let's turn your idea into something meaningful.
+        Choose how you want to contact us.
+      </p>
+
+      <div class="contact-options">
+        <button class="btn" onclick="contactWhatsApp()">
+          WhatsApp ↗
+        </button>
+
+        <button class="btn" onclick="copyEmail()">
+          Copy Gmail ↗
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+</main>
+
+<footer>
+  <p>© 2026 <span>KREXO</span>. All Rights Reserved.</p>
+  <p style="margin-top:8px">DESIGN · EDIT · DEVELOP</p>
+  <p style="margin-top:8px">CREATIVITY · TECHNOLOGY · ORIGINALITY</p>
+</footer>
+
+<script>
+
+// =====================================
+// KREXO CONFIGURATION
+// =====================================
+
+const PHONE = "6281436119855";
+const EMAIL = "yuvandleon2512@gmail.com";
+
+// GANTI URL PREVIEW DI SINI
+
+const PREVIEW = {
+  dailyProgram: "MASUKKAN_URL_VIDEO_PROGRAM_HARIAN",
+  businessProgram: "MASUKKAN_URL_VIDEO_PROGRAM_BISNIS",
+  meme: "MASUKKAN_URL_VIDEO_EDIT_MEME",
+  vfx: "MASUKKAN_URL_VIDEO_VFX",
+  infographic: "MASUKKAN_URL_GAMBAR_INFOGRAFIS",
+  poster: "MASUKKAN_URL_GAMBAR_POSTER",
+  ppt: "MASUKKAN_URL_VIDEO_PREVIEW_PPT"
+};
+
+// Layanan yang sedang dipilih
+let selectedOrderService = "";
+
+// =====================================
+// NAVIGATION
+// =====================================
+
+function showPage(pageId) {
+  const targetPage = document.getElementById(pageId);
+
+  if (!targetPage) return;
+
+  document.querySelectorAll('.page').forEach(page => {
+    page.classList.remove('active');
+  });
+
+  targetPage.classList.add('active');
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.classList.remove('active');
+
+    if (link.getAttribute('href') === '#' + pageId) {
+      link.classList.add('active');
+    }
+  });
+
+  document.getElementById('navLinks').classList.remove('open');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  setTimeout(revealElements, 100);
+}
+
+// =====================================
+// MOBILE MENU
+// =====================================
+
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+// =====================================
+// PREVIEW SYSTEM
+// =====================================
+
+function openPreview(title, type, url) {
+  const modal = document.getElementById('previewModal');
+  const stage = document.getElementById('previewStage');
+
+  document.getElementById('previewTitle').textContent = title;
+  stage.innerHTML = '';
+
+  if (!url || url.startsWith('MASUKKAN_URL_')) {
+    stage.innerHTML = `
+      <div style="padding:30px;text-align:center">
+        <div style="font-size:45px;color:var(--lime)">↗</div>
+        <h3 style="margin:15px 0">Preview belum tersedia</h3>
+        <p style="color:var(--muted);font-size:12px;line-height:1.8">
+          Tambahkan URL video atau gambar pada bagian PREVIEW
+          CONFIGURATION di dalam JavaScript.
+        </p>
+      </div>
+    `;
+  } else if (type === 'video') {
+    const video = document.createElement('video');
+
+    video.src = url;
+    video.controls = true;
+    video.playsInline = true;
+    video.preload = 'metadata';
+
+    video.onerror = function() {
+      stage.innerHTML = `
+        <p style="padding:25px;text-align:center;color:var(--muted)">
+          Video tidak dapat dimuat. Periksa URL video yang digunakan.
+        </p>
+      `;
+    };
+
+    stage.appendChild(video);
+  } else {
+    const img = document.createElement('img');
+
+    img.src = url;
+    img.alt = title;
+
+    img.onerror = function() {
+      stage.innerHTML = `
+        <p style="padding:25px;text-align:center;color:var(--muted)">
+          Gambar tidak dapat dimuat. Periksa URL gambar yang digunakan.
+        </p>
+      `;
+    };
+
+    stage.appendChild(img);
+  }
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePreview() {
+  const modal = document.getElementById('previewModal');
+  const stage = document.getElementById('previewStage');
+
+  const video = stage.querySelector('video');
+
+  if (video) {
+    video.pause();
+    video.removeAttribute('src');
+    video.load();
+  }
+
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function outsidePreview(event) {
+  if (event.target.id === 'previewModal') {
+    closePreview();
+  }
+}
+
+// =====================================
+// ORDER SYSTEM
+// =====================================
+
+// Buka pilihan metode pemesanan
+function orderNow(service) {
+  selectedOrderService = service;
+
+  document.getElementById('selectedService').textContent =
+    service;
+
+  document.getElementById('orderModal').classList.add('active');
+
+  document.body.style.overflow = 'hidden';
+}
+
+// Tutup pilihan metode
+function closeOrder() {
+  document.getElementById('orderModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Klik area luar modal untuk menutup
+function outsideOrder(event) {
+  if (event.target.id === 'orderModal') {
+    closeOrder();
+  }
+}
+
+// =====================================
+// ORDER VIA WHATSAPP
+// =====================================
+
+function orderViaWhatsApp() {
+  const message =
+    `Halo KREXO! Saya tertarik memesan layanan: ${selectedOrderService}. ` +
+    `Boleh saya bertanya lebih lanjut mengenai harga dan proses pengerjaannya?`;
+
+  const whatsappURL =
+    "https://wa.me/" + PHONE +
+    "?text=" + encodeURIComponent(message);
+
+  window.open(whatsappURL, "_blank");
+
+  closeOrder();
+}
+
+// =====================================
+// ORDER VIA GMAIL
+// =====================================
+
+function orderViaGmail() {
+  const subject =
+    `Pemesanan Layanan KREXO - ${selectedOrderService}`;
+
+  const body =
+    `Halo KREXO!\n\n` +
+    `Saya tertarik memesan layanan berikut:\n` +
+    `${selectedOrderService}\n\n` +
+    `Saya ingin bertanya lebih lanjut mengenai harga, ` +
+    `detail pengerjaan, dan proses pemesanan.\n\n` +
+    `Terima kasih.`;
+
+  const gmailURL =
+    "mailto:" + EMAIL +
+    "?subject=" + encodeURIComponent(subject) +
+    "&body=" + encodeURIComponent(body);
+
+  window.location.href = gmailURL;
+
+  closeOrder();
+}
+
+// =====================================
+// CONTACT WHATSAPP
+// =====================================
+
+function contactWhatsApp() {
+  const message =
+    "Halo KREXO! Saya ingin bertanya mengenai layanan yang tersedia.";
+
+  window.open(
+    "https://wa.me/" + PHONE +
+    "?text=" + encodeURIComponent(message),
+    "_blank"
+  );
+}
+
+// =====================================
+// COPY GMAIL
+// =====================================
+
+function copyEmail() {
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(EMAIL)
+      .then(() => alert("Alamat Gmail berhasil disalin: " + EMAIL))
+      .catch(() => fallbackCopyEmail());
+  } else {
+    fallbackCopyEmail();
+  }
+}
+
+function fallbackCopyEmail() {
+  const textArea = document.createElement("textarea");
+
+  textArea.value = EMAIL;
+  textArea.style.position = "fixed";
+  textArea.style.opacity = "0";
+
+  document.body.appendChild(textArea);
+  textArea.select();
+
+  try {
+    document.execCommand("copy");
+    alert("Alamat Gmail berhasil disalin: " + EMAIL);
+  } catch (error) {
+    alert("Silakan salin email secara manual: " + EMAIL);
+  }
+
+  document.body.removeChild(textArea);
+}
+
+// =====================================
+// KEYBOARD ESCAPE
+// =====================================
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    closePreview();
+    closeOrder();
+  }
+});
+
+// =====================================
+// REVEAL ANIMATION
+// =====================================
+
+function revealElements() {
+  const elements = document.querySelectorAll(
+    '.page.active .service-card, ' +
+    '.page.active .catalog-card, ' +
+    '.page.active .stat'
+  );
+
+  elements.forEach((element, index) => {
+    element.classList.remove('reveal', 'show');
+
+    void element.offsetWidth;
+
+    element.classList.add('reveal');
+
+    setTimeout(() => {
+      element.classList.add('show');
+    }, index * 80);
+  });
+}
+
+window.addEventListener('load', revealElements);
+
+</script>
+
+</body>
+</html>
